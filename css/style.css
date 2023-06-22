@@ -1,0 +1,230 @@
+:root {
+    --global-nunito-font : 'Work Sans', sans-serif;
+    --global-background-color : linear-gradient(45deg, #29bae4 0%, #ee76ad 100%);
+    --global-section-background : #78d5ef;
+    --global-secondary-section-background : #ee76ad;
+    --global-footer-section-background : #29bae4;
+    --global-text-gray-color : rgba(255, 255, 255, 0.8);
+    --global-title-text-gray : #8b8b92;
+    --global-white-color : #fff;
+    --global-balck-color : #000;
+    --global-transition : all 0.3s linear 0s;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: var(--global-nunito-font);
+}
+
+
+/* start header section  */
+
+/* start nav bar */
+.navbar {
+    width: 100%;
+    position: absolute;
+    z-index: 100;
+}
+.navbar.active{
+    width: 100%;
+    position: fixed;
+    /* background-image: linear-gradient(#fff ,#fff,transparent); */
+    background-color: var(--global-white-color);
+    box-shadow: 0px 5px 20px var(--global-title-text-gray);
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    animation: navani 0.5s linear 0s 1 forwards;
+}
+
+@keyframes navani {
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
+}
+.navbar.active .navbar-brand{
+    color: var(--global-balck-color);
+}
+.navbar.active .navbar-item .nav-link {
+    color: var(--global-balck-color);
+}
+.navbar.active .navbar-item .nav-link.active {
+    color: var(--global-section-background);
+}
+.navbar-brand {
+    font-size: 30px;
+    color: var(--global-white-color);
+}
+
+
+.navbar-toggler {
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+
+}
+.navbar-toggler .nav_btn_lines {
+    margin: 4px 0px;
+    width: 30px;
+    height: 5px;
+    background-color: #000;
+    border-radius: 3px;
+}
+.navbar-item .nav-link {
+    color: var(--global-white-color);
+    padding: 30px;
+    font-size: 20px;
+    font-weight: 300;
+    transition: var(--global-transition);
+}
+.navbar-item .nav-link:hover{
+    color: var(--global-text-gray-color);
+
+}
+.navbar-item .nav-link.active{
+    color: var(--global-text-gray-color);
+}
+/* end nav bar */
+
+/* start main banner section */
+.main_banner_section {
+    background-image: var(--global-background-color);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 85%);
+}
+.main_banner_section_container {
+    height: 150vh;
+    
+
+}
+.main_banner_content_container {
+    padding: 150px;
+}
+.main_banner_content_header h1  {
+    color: var(--global-white-color);
+    font-size: 70px;
+    font-weight: 200;
+}
+.main_banner_content_header h1 span {
+    font-weight: 700;
+}
+.main_banner_content_header h1 span::after{
+    content: "|";
+    color: var(--global-white-color);
+    font-weight: 500;
+}
+
+.main_banner_content_body p {
+    color: var(--global-text-gray-color);
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 1.5;
+}
+/* end main banner section */
+/* start banner carousel section */
+.banner_carousel {
+    transform: translateY(-40%);
+}
+#banner_carousel .owl-dots span {
+    width: 20px;
+    height: 20px;
+}
+#banner_carousel .owl-dots button.active span{
+    background-color: var(--global-section-background);
+}
+/* end banner carousel section */
+/* end header section */
+
+/* start global btn */
+.global_btn {
+    color: var(--global-white-color);
+    padding: 25px 30px;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: 300;
+    border-radius: 50px;
+    border: 1px solid var(--global-text-gray-color);
+    transition: var(--global-transition);
+}
+.global_btn:hover {
+    color: var(--global-balck-color);
+    background-color: var(--global-white-color);
+    border: 1px solid var(--global-white-color);
+}
+/* end global btn */
+
+/* Start Global title */
+.global_title_header span {
+    letter-spacing: 2px;
+    font-weight: 300;
+}
+.global_titile_body h1 {
+    font-weight: 400;
+    line-height: 1.5;
+}
+/* end global title */
+
+/* start global para */
+.global_para {
+    color: var(--global-title-text-gray);
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.8;
+}
+/* end global para */
+/* Start Service Platform Section */
+.service_header_icon_container {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    background-color: #eaf8fd;
+    border-radius: 50%;
+    display : grid;
+    place-items: center;
+}
+.service_content_body h3 {
+    font-size: 22px;
+    font-weight: 400;
+}
+/* End Service Platform section */
+
+/* Start Business Growth Section */
+.business_growth_section {
+    height: 120vh;
+    background-color: var(--global-section-background);
+    display: grid;
+    place-items: center;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 85%);
+    
+}
+.business_growth_content h1 {
+    color: var(--global-white-color);
+    font-size: 50px;
+    font-weight: 200;
+}
+/* end business growth section */
+
+/* start recent work section */
+.recent_work_content_container {
+    background-color: #f8faff;
+}
+
+.recent_work_background_container,.recent_work_content{
+    height: 100vh;
+}
+.recent_work_background {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+.recent_work_content_main_container {
+    padding: 150px 100px;
+}
+/* end recent work section */
