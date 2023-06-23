@@ -9,6 +9,7 @@
     --global-white-color : #fff;
     --global-balck-color : #000;
     --global-transition : all 0.3s linear 0s;
+    --global-clip-path : polygon(0% 0%, 100% 0%, 100% 100%, 0% 85%);
 }
 
 * {
@@ -18,8 +19,89 @@
 
 body {
     font-family: var(--global-nunito-font);
+    overflow-x: hidden;
 }
 
+body::-webkit-scrollbar {
+    width: 8px;
+}
+body::-webkit-scrollbar-thumb{
+    background-color: #78d5ef;
+    border-radius: 5px;
+    border: 1px solid var(--global-white-color);
+}
+body::-webkit-scrollbar-track{
+    background-image: linear-gradient(var(--global-secondary-section-background),var(--global-section-background));
+}
+
+/* start preloader */
+#preloader {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-color: var(--global-white-color);
+    z-index: 1000;
+}
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    height: 96px;
+    width: 96px;
+    animation: rotate_3922 1.2s linear infinite;
+    background-color: #9b59b6;
+    background-image: linear-gradient(#9b59b6, #84cdfa, #5ad1cd);
+  }
+  
+  .loader span {
+    position: absolute;
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    background-color: #9b59b6;
+    background-image: linear-gradient(#9b59b6, #84cdfa, #5ad1cd);
+  }
+  
+  .loader span:nth-of-type(1) {
+    filter: blur(5px);
+  }
+  
+  .loader span:nth-of-type(2) {
+    filter: blur(10px);
+  }
+  
+  .loader span:nth-of-type(3) {
+    filter: blur(25px);
+  }
+  
+  .loader span:nth-of-type(4) {
+    filter: blur(50px);
+  }
+  
+  .loader::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background-color: #fff;
+    border: solid 5px #ffffff;
+    border-radius: 50%;
+  }
+  
+  @keyframes rotate_3922 {
+    from {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+  
+    to {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+  
+/* end preloader */
 
 /* start header section  */
 
@@ -28,6 +110,11 @@ body {
     width: 100%;
     position: absolute;
     z-index: 100;
+}
+@media(max-width:992px){
+    .navbar-collapse {
+        background-color: var(--global-section-background);
+    }
 }
 .navbar.active{
     width: 100%;
@@ -47,14 +134,26 @@ body {
         transform: translateY(0%);
     }
 }
+.navbar-brand {
+    color: var(--global-white-color) !important;
+}
 .navbar.active .navbar-brand{
-    color: var(--global-balck-color);
+    color: var(--global-balck-color) !important;
 }
 .navbar.active .navbar-item .nav-link {
     color: var(--global-balck-color);
 }
 .navbar.active .navbar-item .nav-link.active {
     color: var(--global-section-background);
+}
+
+@media(max-width:992px){
+    .navbar.active .navbar-item .nav-link {
+        color: var(--global-white-color);
+    }
+    .navbar.active .navbar-item .nav-link.active {
+        color: var(--global-text-gray-color);
+    }
 }
 .navbar-brand {
     font-size: 30px;
@@ -66,15 +165,24 @@ body {
     border: none;
     box-shadow: none;
     background-color: transparent;
+    outline: none;
 
+}
+.navbar-toggler:focus{
+    outline: none;
+    border: none;
+    box-shadow: none;
 }
 .navbar-toggler .nav_btn_lines {
     margin: 4px 0px;
     width: 30px;
     height: 5px;
-    background-color: #000;
+    background-color: var(--global-white-color);
     border-radius: 3px;
 }
+.navbar.active .navbar-toggler .nav_btn_lines {
+    background-color: var(--global-section-background);
+} 
 .navbar-item .nav-link {
     color: var(--global-white-color);
     padding: 30px;
@@ -94,7 +202,7 @@ body {
 /* start main banner section */
 .main_banner_section {
     background-image: var(--global-background-color);
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 85%);
+    clip-path: var(--global-clip-path);
 }
 .main_banner_section_container {
     height: 150vh;
@@ -102,7 +210,7 @@ body {
 
 }
 .main_banner_content_container {
-    padding: 150px;
+    padding: 150px 0px;
 }
 .main_banner_content_header h1  {
     color: var(--global-white-color);
@@ -198,7 +306,7 @@ body {
     background-color: var(--global-section-background);
     display: grid;
     place-items: center;
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 85%);
+    clip-path: var(--global-clip-path);
     
 }
 .business_growth_content h1 {
@@ -224,7 +332,182 @@ body {
     background-repeat: no-repeat;
 
 }
+@media (max-width:992px){
+    .recent_work_background {
+        height: 400px;
+    }
+}
 .recent_work_content_main_container {
     padding: 150px 100px;
 }
 /* end recent work section */
+
+/* start customer say section */
+.customer_say_avator {
+    width: 150px;
+    height: 150px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+}
+.customer_say_avator {
+    position: relative;
+}
+.customer_say_avator span {
+    width: 50px;
+    height: 50px;
+    background-color: var(--global-section-background);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.customer_say_avator span img {
+    width: 16px !important;
+    height: 16px;
+}
+.customer_say_footer h4{
+    font-size: 20px;
+    font-weight: 400;
+
+}
+.customer_say_footer span {
+    font-size: 16px;
+    font-weight: 300;
+}
+#customer_say_carousel{
+    position: relative;
+}
+#customer_say_carousel .owl-nav span {
+    font-size: 50px;
+    color: var(--global-title-text-gray);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: var(--global-transition);
+}
+#customer_say_carousel .owl-nav span.left{
+    left: -20px;
+    top: 50%;
+}
+#customer_say_carousel .owl-nav span.right{
+    right: -20px;
+    top: 50%;
+}
+#customer_say_carousel:hover .owl-nav span {
+    opacity: 1;
+}
+#customer_say_carousel .owl-dots button span {
+    width: 15px;
+    height: 15px;
+}
+#customer_say_carousel .owl-dots button.active span {
+    background-color: var(--global-section-background);
+}
+/* end customer say section */
+
+/* start achievement section */
+.achievements_section {
+    padding: 200px 0px;
+    background-color: var(--global-secondary-section-background);
+    clip-path: var(--global-clip-path);
+}
+.achievements_section .global_titile_body h1 {
+    color: var(--global-white-color);
+    font-size: 60px;
+    font-weight: 300;
+
+}
+.achievements_content_container span{
+    font-size: 50px;
+    color: var(--global-white-color);
+}
+.achievements_section .global_para {
+    color: var(--global-text-gray-color);
+}
+/* end achievemet section */
+
+/* start blog section */
+.blog_img {
+    width: 100%;
+    height: 400px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.blog_content_body .blog_date {
+    color: var(--global-title-text-gray);
+    font-weight: 300;
+}
+.blog_content_body h3 {
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+/* end blog section */
+
+/* start footer section */
+.footer_container {
+    padding: 150px 0px;
+    background-color: var(--global-footer-section-background);
+}
+.footer_content_header {
+    margin-bottom: 30px;
+}
+.footer_content_header span{
+    color: var(--global-white-color);
+    font-size: 23px;
+    font-weight: 300;
+}
+.footer_content_body .footer_para{
+    color: var(--global-text-gray-color);
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 2;
+}
+.footer_content_body .footer_list_group li a{
+    color: var(--global-text-gray-color);
+    font-size: 20px;
+    font-weight: 300;
+}
+.footer_content_foot a {
+    width: 50px;
+    height: 50px;
+    margin: 0px 10px;
+    color: var(--global-white-color) !important;
+    background-color: #78d5ef;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+}
+.footer_content_foot .form-group {
+    position: relative;
+
+}
+.footer_content_foot .form-control {
+    background-color: transparent;
+    font-size: 20px;
+    caret-color: var(--global-white-color);
+}
+.footer_content_foot .form-control::placeholder {
+    color: var(--global-text-gray-color);
+
+}
+.footer_subscirbe_btn {
+
+    color: var(--global-white-color);
+    border: none;
+    background-color: transparent;
+    position: absolute;
+
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+
+    opacity: 0.8;
+}
+/* end footer section */
